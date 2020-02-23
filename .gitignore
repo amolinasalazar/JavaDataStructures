@@ -1,0 +1,10 @@
+.vscode/
+.settings
+.classpath
+.project
+target/
+
+BaseHashTable.java
+GraphsExercises.java
+HashTable.java
+Main.java
