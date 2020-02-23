@@ -54,6 +54,47 @@ public class BaseLinkedListTests {
     }
 
     @Test
+    public void remove_emptyLinkedList_null() {
+        // Arrange
+        LinkedList<Integer> emptyLinkedList = new LinkedList<>();
+
+        // Act - Assert
+        assertEquals(null, emptyLinkedList.remove(0));
+        assertEquals(null, emptyLinkedList.remove(3));
+    }
+
+    @Test
+    public void remove_negativeIndex_null() {
+        // Arrange
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.add(0);
+        linkedList.add(1);
+        linkedList.add(2);
+
+        // Act - Assert
+        assertEquals(null, linkedList.remove(-1));
+    }
+
+    @Test
+    public void remove_validIndexes_removeThemCorrectly() {
+        // Arrange
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        Integer valueToAdd1 = 0, valueToAdd2 = 1, valueToAdd3 = 2;
+
+        linkedList.add(valueToAdd1);
+        linkedList.add(valueToAdd2);
+        linkedList.add(valueToAdd3);
+
+        // Act
+        Integer valueRemoved1 = linkedList.remove(0);
+        Integer valueRemoved3 = linkedList.remove(1);
+
+        // Assert
+        assertEquals(valueToAdd1, valueRemoved1);
+        assertEquals(valueToAdd3, valueRemoved3);
+    }
+
+    @Test
     public void size_allCases_currentSize() {
         // Arrange
         LinkedList<Integer> emptyLinkedList = new LinkedList<>();
