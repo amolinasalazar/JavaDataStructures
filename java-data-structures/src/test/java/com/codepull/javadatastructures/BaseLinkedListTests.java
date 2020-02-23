@@ -4,18 +4,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class BaseLinkedListTests {
-    @Test
-    public void add_emptyLinkedList_addsItCorrectly() {
-        // Arrange
-        LinkedList<Integer> linkedList = new LinkedList<>();
-        Integer valueToAdd = 1;
-
-        // Act
-        linkedList.add(valueToAdd);
-
-        // Assert
-        assertEquals(valueToAdd, linkedList.get(0));
-    }
 
     @Test
     public void add_severalElements_addThemCorrectly() {
