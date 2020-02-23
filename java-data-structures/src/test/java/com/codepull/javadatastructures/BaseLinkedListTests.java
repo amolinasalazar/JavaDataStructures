@@ -51,4 +51,19 @@ public class BaseLinkedListTests {
         // Act - Assert
         assertEquals(null, linkedList.get(1));
     }
+
+    @Test
+    public void size_allCases_currentSize() {
+        // Arrange
+        LinkedList<Integer> emptyLinkedList = new LinkedList<>();
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.add(0);
+        linkedList.add(1);
+        linkedList.add(2);
+
+        // Act - Assert
+        assertEquals(0, emptyLinkedList.size());
+        assertEquals(3, linkedList.size());
+    }
+
 }
