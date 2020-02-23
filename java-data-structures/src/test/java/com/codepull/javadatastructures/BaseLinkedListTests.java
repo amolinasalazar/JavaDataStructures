@@ -86,6 +86,7 @@ public class BaseLinkedListTests {
         final Integer valueRemoved3 = linkedList.remove(1);
 
         // Assert
+        assertEquals(1, linkedList.size());
         assertEquals(valueAdded1, valueRemoved1);
         assertEquals(valueAdded3, valueRemoved3);
     }
