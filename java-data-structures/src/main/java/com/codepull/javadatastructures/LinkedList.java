@@ -2,7 +2,7 @@ package com.codepull.javadatastructures;
 
 public class LinkedList<E> implements BaseLinkedList<E> {
     
-    public class LinkedListNode<T>{    
+    public class LinkedListNode<T>{
         public T value;
         public LinkedListNode<T> next;
 
@@ -24,7 +24,7 @@ public class LinkedList<E> implements BaseLinkedList<E> {
             this.head = new LinkedListNode<E>(value);
         }
         else{
-            LinkedListNode<E> node = head;
+            LinkedListNode<E> node = this.head;
             while(node.next != null){
                 node = node.next;
             }
@@ -37,33 +37,60 @@ public class LinkedList<E> implements BaseLinkedList<E> {
 
     @Override
     public E get(final int index) {
-        if(index < 0 || index >= this.size){
+        if(!validateIndex(index)){
             return null;
         }
 
-        if(size == 0){
-            return null;
+        int counter;
+        LinkedListNode<E> node = this.head;
+        
+        for(counter = 0; node.next != null && counter < index; counter++){
+            node = node.next;
         }
-        else{
-            int counter;
-            LinkedListNode<E> node = head;
-            
-            for(counter = 0; node.next != null && counter < index; counter++){
-                node = node.next;
-            }
 
-            return counter == index ? node.value : null;
-        }
+        return counter == index ? node.value : null;
     }
 
     @Override
     public E remove(final int index) {
-        
-        return null;
+        if(!validateIndex(index)){
+            return null;
+        }
+
+        if(this.size == 1){
+            this.size--;
+            this.head = null;
+            return null;
+        }
+
+        if(index == 0){
+            this.size--;
+            E removedElement = this.head.value;
+            this.head = this.head.next;
+            return removedElement;
+        }
+
+        int counter;
+        LinkedListNode<E> node = this.head;
+        LinkedListNode<E> previousNode = this.head;
+
+        for(counter = 0; node.next != null && counter < index; counter++){
+            previousNode = node;
+            node = node.next;
+        }
+
+        this.size--;
+        E removedElement = node.value;
+        previousNode.next = node.next;
+        return removedElement;
     }
 
     @Override
     public int size() {
         return this.size;
+    }
+
+    private boolean validateIndex(int index){
+        return index >= 0 && index < this.size;
     }
 }
