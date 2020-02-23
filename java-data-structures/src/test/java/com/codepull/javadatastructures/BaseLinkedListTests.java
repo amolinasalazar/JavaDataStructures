@@ -6,6 +6,19 @@ import org.junit.Test;
 public class BaseLinkedListTests {
 
     @Test
+    public void add_nullElement_addItCorrectly() {
+        // Arrange
+        LinkedList<Integer> linkedList = new LinkedList<>();
+
+        // Act
+        linkedList.add(null);
+
+        // Assert
+        assertEquals(1, linkedList.size());
+        assertEquals(null, linkedList.get(0));
+    }
+
+    @Test
     public void add_severalElements_addThemCorrectly() {
         // Arrange
         LinkedList<Integer> linkedList = new LinkedList<>();
