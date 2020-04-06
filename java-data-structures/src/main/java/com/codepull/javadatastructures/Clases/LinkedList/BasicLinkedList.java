@@ -1,22 +1,13 @@
-package com.codepull.javadatastructures.Clases;
+package com.codepull.javadatastructures.Clases.LinkedList;
 
-import com.codepull.javadatastructures.Interfaces.BaseLinkedList;
+import com.codepull.javadatastructures.Interfaces.LinkedList.BaseLinkedList;
 
-public class LinkedList<E> implements BaseLinkedList<E>{
-	
-	public class LinkedListNode<T>{
-		public T value;
-		public LinkedListNode<T> next;
-
-		public LinkedListNode(T value){
-			this.value = value;
-		}
-	}
+public class BasicLinkedList<E> implements BaseLinkedList<E> {
 
 	LinkedListNode<E> head;
 	int size;
 
-	public LinkedList(){
+	public BasicLinkedList(){
 		this.size = 0;
 	}
 

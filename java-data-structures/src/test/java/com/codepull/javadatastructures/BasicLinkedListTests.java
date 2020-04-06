@@ -1,13 +1,13 @@
 package com.codepull.javadatastructures;
 
-import com.codepull.javadatastructures.Clases.LinkedList;
+import com.codepull.javadatastructures.Clases.LinkedList.BasicLinkedList;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-public class BaseLinkedListTests {
+public class BasicLinkedListTests {
 	private final Integer valueAdded1 = 0, valueAdded2 = 1, valueAdded3 = 2;
-	private LinkedList<Integer> getLinkedListWithSeveralElements(){
-		final LinkedList<Integer> linkedList = new LinkedList<>();
+	private BasicLinkedList<Integer> getLinkedListWithSeveralElements(){
+		final BasicLinkedList<Integer> linkedList = new BasicLinkedList<>();
 
 		linkedList.add(valueAdded1);
 		linkedList.add(valueAdded2);
@@ -19,7 +19,7 @@ public class BaseLinkedListTests {
 	@Test
 	public void add_nullElement_addItCorrectly() {
 		// Arrange
-		final LinkedList<Integer> linkedList = new LinkedList<>();
+		final BasicLinkedList<Integer> linkedList = new BasicLinkedList<>();
 
 		// Act
 		linkedList.add(null);
@@ -32,7 +32,7 @@ public class BaseLinkedListTests {
 	@Test
 	public void add_severalElements_addThemCorrectly() {
 		// Arrange - Act
-		final LinkedList<Integer> linkedList = getLinkedListWithSeveralElements();
+		final BasicLinkedList<Integer> linkedList = getLinkedListWithSeveralElements();
 
 		// Assert
 		assertEquals(valueAdded1, linkedList.get(0));
@@ -43,7 +43,7 @@ public class BaseLinkedListTests {
 	@Test
 	public void get_negativeIndex_null() {
 		// Arrange
-		final LinkedList<Integer> linkedList = new LinkedList<>();
+		final BasicLinkedList<Integer> linkedList = new BasicLinkedList<>();
 
 		// Act - Assert
 		assertEquals(null, linkedList.get(-1));
@@ -52,7 +52,7 @@ public class BaseLinkedListTests {
 	@Test
 	public void get_outOfBoundsIndex_null() {
 		// Arrange
-		final LinkedList<Integer> linkedList = new LinkedList<>();
+		final BasicLinkedList<Integer> linkedList = new BasicLinkedList<>();
 
 		// Act - Assert
 		assertEquals(null, linkedList.get(1));
@@ -61,7 +61,7 @@ public class BaseLinkedListTests {
 	@Test
 	public void remove_emptyLinkedList_null() {
 		// Arrange
-		final LinkedList<Integer> emptyLinkedList = new LinkedList<>();
+		final BasicLinkedList<Integer> emptyLinkedList = new BasicLinkedList<>();
 
 		// Act - Assert
 		assertEquals(null, emptyLinkedList.remove(0));
@@ -71,7 +71,7 @@ public class BaseLinkedListTests {
 	@Test
 	public void remove_negativeIndex_null() {
 		// Arrange
-		final LinkedList<Integer> linkedList = getLinkedListWithSeveralElements();
+		final BasicLinkedList<Integer> linkedList = getLinkedListWithSeveralElements();
 
 		// Act - Assert
 		assertEquals(null, linkedList.remove(-1));
@@ -80,7 +80,7 @@ public class BaseLinkedListTests {
 	@Test
 	public void remove_validIndexes_removeThemCorrectly() {
 		// Arrange
-		final LinkedList<Integer> linkedList = getLinkedListWithSeveralElements();
+		final BasicLinkedList<Integer> linkedList = getLinkedListWithSeveralElements();
 
 		// Act
 		final Integer valueRemoved1 = linkedList.remove(0);
@@ -95,8 +95,8 @@ public class BaseLinkedListTests {
 	@Test
 	public void size_allCases_currentSize() {
 		// Arrange
-		final LinkedList<Integer> emptyLinkedList = new LinkedList<>();
-		final LinkedList<Integer> linkedList = getLinkedListWithSeveralElements();
+		final BasicLinkedList<Integer> emptyLinkedList = new BasicLinkedList<>();
+		final BasicLinkedList<Integer> linkedList = getLinkedListWithSeveralElements();
 
 		// Act - Assert
 		assertEquals(0, emptyLinkedList.size());

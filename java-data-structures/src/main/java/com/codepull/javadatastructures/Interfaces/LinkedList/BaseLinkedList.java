@@ -1,4 +1,4 @@
-package com.codepull.javadatastructures.Interfaces;
+package com.codepull.javadatastructures.Interfaces.LinkedList;
 
 public interface BaseLinkedList<E> {
 
