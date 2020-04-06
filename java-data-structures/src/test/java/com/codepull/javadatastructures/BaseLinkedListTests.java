@@ -1,5 +1,6 @@
 package com.codepull.javadatastructures;
 
+import com.codepull.javadatastructures.Clases.LinkedList;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 

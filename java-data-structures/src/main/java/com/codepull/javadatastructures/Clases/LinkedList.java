@@ -1,6 +1,8 @@
-package com.codepull.javadatastructures;
+package com.codepull.javadatastructures.Clases;
 
-public class LinkedList<E> implements BaseLinkedList<E> {
+import com.codepull.javadatastructures.Interfaces.BaseLinkedList;
+
+public class LinkedList<E> implements BaseLinkedList<E>{
 	
 	public class LinkedListNode<T>{
 		public T value;
