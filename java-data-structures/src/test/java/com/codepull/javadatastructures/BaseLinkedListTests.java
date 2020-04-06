@@ -40,7 +40,7 @@ public class BaseLinkedListTests {
 	}
 
 	@Test
-	public void get_negativeOutOfBoundsIndex_null() {
+	public void get_negativeIndex_null() {
 		// Arrange
 		final LinkedList<Integer> linkedList = new LinkedList<>();
 
@@ -49,7 +49,7 @@ public class BaseLinkedListTests {
 	}
 
 	@Test
-	public void get_positiveOutOfBoundsIndex_null() {
+	public void get_outOfBoundsIndex_null() {
 		// Arrange
 		final LinkedList<Integer> linkedList = new LinkedList<>();
 
@@ -101,5 +101,4 @@ public class BaseLinkedListTests {
 		assertEquals(0, emptyLinkedList.size());
 		assertEquals(3, linkedList.size());
 	}
-
 }
