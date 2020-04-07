@@ -22,9 +22,9 @@ public class BasicLinkedList<E> implements BaseLinkedList<E> {
 	}
 
 	@Override
-	public void add(final E value) {
+	public void add(final E element) {
 		if(size == 0){
-			this.head = new LinkedListNode<E>(value);
+			this.head = new LinkedListNode<E>(element);
 		}
 		else{
 			LinkedListNode<E> node = this.head;
@@ -32,7 +32,7 @@ public class BasicLinkedList<E> implements BaseLinkedList<E> {
 				node = node.next;
 			}
 
-			node.next = new LinkedListNode<E>(value);
+			node.next = new LinkedListNode<E>(element);
 		}
 
 		this.size++;
@@ -44,14 +44,7 @@ public class BasicLinkedList<E> implements BaseLinkedList<E> {
 			return null;
 		}
 
-		int counter;
-		LinkedListNode<E> node = this.head;
-		
-		for(counter = 0; node.next != null && counter < index; counter++){
-			node = node.next;
-		}
-
-		return counter == index ? node.value : null;
+		return getNthNode(index).value;
 	}
 
 	@Override
@@ -85,6 +78,7 @@ public class BasicLinkedList<E> implements BaseLinkedList<E> {
 		this.size--;
 		E removedElement = node.value;
 		previousNode.next = node.next;
+
 		return removedElement;
 	}
 
@@ -93,7 +87,19 @@ public class BasicLinkedList<E> implements BaseLinkedList<E> {
 		return this.size;
 	}
 
-	private boolean validateIndex(int index){
+	protected boolean validateIndex(int index){
 		return index >= 0 && index < this.size;
+	}
+
+	
+	protected LinkedListNode<E> getNthNode(final int index){
+		int counter;
+		LinkedListNode<E> node = this.head;
+
+		for(counter = 0; node.next != null && counter < index; counter++){
+			node = node.next;
+		}
+
+		return node;
 	}
 }
