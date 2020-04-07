@@ -58,8 +58,8 @@ public class LinkedList<E> extends BasicLinkedList<E> implements ExtendedLinkedL
 	}
 
 	public void clear(){
-		for(int i=0; i<this.size; i++){
-			remove(i);
+		while(this.size > 0){
+			remove();
 		}
 	}
 
