@@ -35,36 +35,25 @@ public class LinkedList<E> extends BasicLinkedList<E> implements ExtendedLinkedL
 
 	@Override
 	public E remove(final int index) {
-		if(!validateIndex(index)){
-			return null;
-		}
+		if(!validateIndex(index)) return null;
+
+		E removedElement;
 
 		if(this.size == 1){
-			this.size--;
+			removedElement = this.head.value;
 			this.head = null;
-			return null;
 		}
-
-		if(index == 0){
-			this.size--;
-			E removedElement = this.head.value;
+		else if(index == 0){
+			removedElement = this.head.value;
 			this.head = this.head.next;
-			return removedElement;
 		}
-
-		int counter;
-		LinkedListNode<E> node = this.head;
-		LinkedListNode<E> previousNode = this.head;
-
-		for(counter = 0; node.next != null && counter < index; counter++){
-			previousNode = node;
-			node = node.next;
+		else{
+			LinkedListNode<E> previousNode = getNthNode(index-1);
+			removedElement = previousNode.next.value;
+			previousNode.next = previousNode.next.next;
 		}
 
 		this.size--;
-		E removedElement = node.value;
-		previousNode.next = node.next;
-
 		return removedElement;
 	}
 
