@@ -49,7 +49,22 @@ public class BasicLinkedList<E> implements BaseLinkedList<E> {
 
 	@Override
 	public E remove() {
-		return null;
+		if(this.size == 0) return null;
+
+		E removedElement;
+
+		if(this.size == 1){
+			removedElement = this.head.value;
+			this.head = null;
+		}
+		else{
+			LinkedListNode<E> previousNode = getNthNode(this.size-2);
+			removedElement = previousNode.next.value;
+			previousNode.next = null;
+		}
+
+		this.size--;
+		return removedElement;
 	}
 
 	@Override
@@ -61,7 +76,6 @@ public class BasicLinkedList<E> implements BaseLinkedList<E> {
 		return index >= 0 && index < this.size;
 	}
 
-	
 	protected LinkedListNode<E> getNthNode(final int index){
 		int counter;
 		LinkedListNode<E> node = this.head;
