@@ -33,8 +33,45 @@ public class LinkedList<E> extends BasicLinkedList<E> implements ExtendedLinkedL
 		}
 	}
 
-	public void clear(){
+	@Override
+	public E remove(final int index) {
+		if(!validateIndex(index)){
+			return null;
+		}
 
+		if(this.size == 1){
+			this.size--;
+			this.head = null;
+			return null;
+		}
+
+		if(index == 0){
+			this.size--;
+			E removedElement = this.head.value;
+			this.head = this.head.next;
+			return removedElement;
+		}
+
+		int counter;
+		LinkedListNode<E> node = this.head;
+		LinkedListNode<E> previousNode = this.head;
+
+		for(counter = 0; node.next != null && counter < index; counter++){
+			previousNode = node;
+			node = node.next;
+		}
+
+		this.size--;
+		E removedElement = node.value;
+		previousNode.next = node.next;
+
+		return removedElement;
+	}
+
+	public void clear(){
+		for(int i=0; i<this.size; i++){
+			remove(i);
+		}
 	}
 
 	public boolean contains(Object o){
