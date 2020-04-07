@@ -57,13 +57,20 @@ public class LinkedList<E> extends BasicLinkedList<E> implements ExtendedLinkedL
 		return removedElement;
 	}
 
+	@Override
 	public void clear(){
 		while(this.size > 0){
 			remove();
 		}
 	}
 
+	@Override
 	public boolean contains(Object o){
+		for(int i=0; i<this.size; i++){
+			if(o == getNthNode(i).value)
+				return true;
+		}
+
 		return false;
 	}
 }
