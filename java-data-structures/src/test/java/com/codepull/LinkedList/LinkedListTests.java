@@ -82,5 +82,4 @@ public class LinkedListTests {
 		assertEquals(LinkedListTestDataHelper.VALUE_ADDED_1, valueRemoved1);
 		assertEquals(LinkedListTestDataHelper.VALUE_ADDED_3, valueRemoved3);
 	}
-
 }
