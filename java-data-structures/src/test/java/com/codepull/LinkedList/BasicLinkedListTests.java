@@ -69,7 +69,28 @@ public class BasicLinkedListTests {
 		assertEquals(null, linkedList.get(1));
 	}
 
-	
+	@Test
+	public void remove_emptyLinkedList_null() {
+		// Arrange
+		final BasicLinkedList<Integer> emptyLinkedList = new BasicLinkedList<>();
+
+		// Act - Assert
+		assertEquals(null, emptyLinkedList.remove());
+	}
+
+	@Test
+	public void remove_validIndexes_removeThemCorrectly() {
+		// Arrange
+		final BasicLinkedList<Integer> linkedList = LinkedListTestDataHelper.getInitializedLinkedList();
+
+		// Act
+		final Integer valueRemoved = linkedList.remove();
+
+		// Assert
+		assertEquals(LinkedListTestDataHelper.LIST_SIZE-1, linkedList.size());
+		assertEquals(LinkedListTestDataHelper.VALUE_ADDED_3, valueRemoved);
+	}
+
 	@Test
 	public void size_allCases_currentSize() {
 		// Arrange
