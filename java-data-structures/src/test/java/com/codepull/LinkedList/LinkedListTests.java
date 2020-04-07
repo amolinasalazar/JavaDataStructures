@@ -50,7 +50,7 @@ public class LinkedListTests {
 	}
 
 	@Test
-	public void remove_emptyLinkedList_null() {
+	public void removeIndex_emptyLinkedList_null() {
 		// Arrange
 		final LinkedList<Integer> emptyLinkedList = new LinkedList<>();
 
@@ -60,7 +60,7 @@ public class LinkedListTests {
 	}
 
 	@Test
-	public void remove_negativeIndex_null() {
+	public void removeIndex_negativeIndex_null() {
 		// Arrange
 		final LinkedList<Integer> linkedList = LinkedListTestDataHelper.getInitializedLinkedList();
 
@@ -69,7 +69,7 @@ public class LinkedListTests {
 	}
 
 	@Test
-	public void remove_validIndexes_removeThemCorrectly() {
+	public void removeIndex_validIndexes_removeThemCorrectly() {
 		// Arrange
 		final LinkedList<Integer> linkedList = LinkedListTestDataHelper.getInitializedLinkedList();
 
@@ -81,5 +81,29 @@ public class LinkedListTests {
 		assertEquals(1, linkedList.size());
 		assertEquals(LinkedListTestDataHelper.VALUE_ADDED_1, valueRemoved1);
 		assertEquals(LinkedListTestDataHelper.VALUE_ADDED_3, valueRemoved3);
+	}
+
+	@Test
+	public void clear_emptyList_emptyList() {
+		// Arrange
+		final LinkedList<Integer> linkedList = new LinkedList<>();
+
+		// Act
+		linkedList.clear();
+
+		// Assert
+		assertEquals(0, linkedList.size());
+	}
+
+	@Test
+	public void clear_severalElements_emptyList() {
+		// Arrange
+		final LinkedList<Integer> linkedList = LinkedListTestDataHelper.getInitializedLinkedList();
+
+		// Act
+		linkedList.clear();
+
+		// Assert
+		assertEquals(0, linkedList.size());
 	}
 }
