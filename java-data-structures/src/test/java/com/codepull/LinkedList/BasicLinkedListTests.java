@@ -1,21 +1,10 @@
-package com.codepull.javadatastructures;
+package com.codepull.LinkedList;
 
 import com.codepull.javadatastructures.Clases.LinkedList.BasicLinkedList;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 public class BasicLinkedListTests {
-	private final Integer valueAdded1 = 0, valueAdded2 = 1, valueAdded3 = 2;
-	private BasicLinkedList<Integer> getLinkedListWithSeveralElements(){
-		final BasicLinkedList<Integer> linkedList = new BasicLinkedList<>();
-
-		linkedList.add(valueAdded1);
-		linkedList.add(valueAdded2);
-		linkedList.add(valueAdded3);
-
-		return linkedList;
-	}
-	
 	@Test
 	public void copyConstructor_nullLinkedList_emptyLinkedList() {
 		// Arrange
@@ -28,13 +17,13 @@ public class BasicLinkedListTests {
 	@Test
 	public void copyConstructor_validLinkedList_linkedListCopy() {
 		// Arrange
-		final BasicLinkedList<Integer> linkedList = new BasicLinkedList<Integer>(getLinkedListWithSeveralElements());
+		final BasicLinkedList<Integer> linkedList = new BasicLinkedList<Integer>(LinkedListTestDataHelper.getInitializedLinkedList());
 
 		// Act - Assert
-		assertEquals(3, linkedList.size());
-		assertEquals(valueAdded1, linkedList.get(0));
-		assertEquals(valueAdded2, linkedList.get(1));
-		assertEquals(valueAdded3, linkedList.get(2));
+		assertEquals(LinkedListTestDataHelper.LIST_SIZE, linkedList.size());
+		assertEquals(LinkedListTestDataHelper.VALUE_ADDED_1, linkedList.get(0));
+		assertEquals(LinkedListTestDataHelper.VALUE_ADDED_2, linkedList.get(1));
+		assertEquals(LinkedListTestDataHelper.VALUE_ADDED_3, linkedList.get(2));
 	}
 
 	@Test
@@ -53,13 +42,13 @@ public class BasicLinkedListTests {
 	@Test
 	public void add_severalElements_addThemCorrectly() {
 		// Arrange - Act
-		final BasicLinkedList<Integer> linkedList = getLinkedListWithSeveralElements();
+		final BasicLinkedList<Integer> linkedList = LinkedListTestDataHelper.getInitializedLinkedList();
 
 		// Assert
-		assertEquals(3, linkedList.size());
-		assertEquals(valueAdded1, linkedList.get(0));
-		assertEquals(valueAdded2, linkedList.get(1));
-		assertEquals(valueAdded3, linkedList.get(2));
+		assertEquals(LinkedListTestDataHelper.LIST_SIZE, linkedList.size());
+		assertEquals(LinkedListTestDataHelper.VALUE_ADDED_1, linkedList.get(0));
+		assertEquals(LinkedListTestDataHelper.VALUE_ADDED_2, linkedList.get(1));
+		assertEquals(LinkedListTestDataHelper.VALUE_ADDED_3, linkedList.get(2));
 	}
 
 	@Test
@@ -93,7 +82,7 @@ public class BasicLinkedListTests {
 	@Test
 	public void remove_negativeIndex_null() {
 		// Arrange
-		final BasicLinkedList<Integer> linkedList = getLinkedListWithSeveralElements();
+		final BasicLinkedList<Integer> linkedList = LinkedListTestDataHelper.getInitializedLinkedList();
 
 		// Act - Assert
 		assertEquals(null, linkedList.remove(-1));
@@ -102,7 +91,7 @@ public class BasicLinkedListTests {
 	@Test
 	public void remove_validIndexes_removeThemCorrectly() {
 		// Arrange
-		final BasicLinkedList<Integer> linkedList = getLinkedListWithSeveralElements();
+		final BasicLinkedList<Integer> linkedList = LinkedListTestDataHelper.getInitializedLinkedList();
 
 		// Act
 		final Integer valueRemoved1 = linkedList.remove(0);
@@ -110,18 +99,18 @@ public class BasicLinkedListTests {
 
 		// Assert
 		assertEquals(1, linkedList.size());
-		assertEquals(valueAdded1, valueRemoved1);
-		assertEquals(valueAdded3, valueRemoved3);
+		assertEquals(LinkedListTestDataHelper.VALUE_ADDED_1, valueRemoved1);
+		assertEquals(LinkedListTestDataHelper.VALUE_ADDED_3, valueRemoved3);
 	}
 
 	@Test
 	public void size_allCases_currentSize() {
 		// Arrange
 		final BasicLinkedList<Integer> emptyLinkedList = new BasicLinkedList<>();
-		final BasicLinkedList<Integer> linkedList = getLinkedListWithSeveralElements();
+		final BasicLinkedList<Integer> linkedList = LinkedListTestDataHelper.getInitializedLinkedList();
 
 		// Act - Assert
 		assertEquals(0, emptyLinkedList.size());
-		assertEquals(3, linkedList.size());
+		assertEquals(LinkedListTestDataHelper.LIST_SIZE, linkedList.size());
 	}
 }
