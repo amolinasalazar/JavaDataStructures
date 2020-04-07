@@ -15,6 +15,27 @@ public class BasicLinkedListTests {
 
 		return linkedList;
 	}
+	
+	@Test
+	public void copyConstructor_nullLinkedList_emptyLinkedList() {
+		// Arrange
+		final BasicLinkedList<Integer> linkedList = new BasicLinkedList<Integer>(null);
+
+		// Act - Assert
+		assertEquals(0, linkedList.size());
+	}
+
+	@Test
+	public void copyConstructor_validLinkedList_linkedListCopy() {
+		// Arrange
+		final BasicLinkedList<Integer> linkedList = new BasicLinkedList<Integer>(getLinkedListWithSeveralElements());
+
+		// Act - Assert
+		assertEquals(3, linkedList.size());
+		assertEquals(valueAdded1, linkedList.get(0));
+		assertEquals(valueAdded2, linkedList.get(1));
+		assertEquals(valueAdded3, linkedList.get(2));
+	}
 
 	@Test
 	public void add_nullElement_addItCorrectly() {
@@ -35,6 +56,7 @@ public class BasicLinkedListTests {
 		final BasicLinkedList<Integer> linkedList = getLinkedListWithSeveralElements();
 
 		// Assert
+		assertEquals(3, linkedList.size());
 		assertEquals(valueAdded1, linkedList.get(0));
 		assertEquals(valueAdded2, linkedList.get(1));
 		assertEquals(valueAdded3, linkedList.get(2));

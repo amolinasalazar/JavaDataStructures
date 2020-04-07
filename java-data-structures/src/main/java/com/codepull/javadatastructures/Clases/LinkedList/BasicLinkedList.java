@@ -11,6 +11,16 @@ public class BasicLinkedList<E> implements BaseLinkedList<E> {
 		this.size = 0;
 	}
 
+	public BasicLinkedList(BasicLinkedList<E> linkedList){
+		if(linkedList != null){
+			for(int i=0; i<linkedList.size(); i++){
+				this.add(linkedList.get(i));
+			}
+	
+			this.size = linkedList.size();
+		}
+	}
+
 	@Override
 	public void add(final E value) {
 		if(size == 0){
