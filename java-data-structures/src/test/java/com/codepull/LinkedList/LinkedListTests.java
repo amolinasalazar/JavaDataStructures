@@ -106,4 +106,22 @@ public class LinkedListTests {
 		// Assert
 		assertEquals(0, linkedList.size());
 	}
+
+	@Test
+	public void contains_elementNotPresent_false() {
+		// Arrange
+		final LinkedList<Integer> linkedList = LinkedListTestDataHelper.getInitializedLinkedList();
+
+		// Act - Assert
+		assertEquals(false, linkedList.contains(100));
+	}
+
+	@Test
+	public void contains_elementPresent_true() {
+		// Arrange
+		final LinkedList<Integer> linkedList = LinkedListTestDataHelper.getInitializedLinkedList();
+
+		// Act - Assert
+		assertEquals(true, linkedList.contains(LinkedListTestDataHelper.VALUE_ADDED_1));
+	}
 }
